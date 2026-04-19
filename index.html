@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiNiT — Ireland's Essential News</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #E8B923;
+    --gold-dark: #C8971F;
+    --green: #3B6D11;
+    --black: #111111;
+    --off-white: #F5F3EE;
+    --white: #FFFFFF;
+    --gray: #888888;
+    --light-gray: #E8E6E0;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--black);
+    color: var(--gold);
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--light-gray);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .nav-logo {
+    background: var(--gold);
+    border-radius: 6px;
+    padding: 4px 14px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .nav-logo span {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--gray);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--black); }
+
+  .nav-cta {
+    background: var(--black);
+    color: var(--white) !important;
+    padding: 9px 22px;
+    border-radius: 4px;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.06em !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--gold) !important; color: var(--black) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--white);
+    border-bottom: 1px solid var(--light-gray);
+    padding: 80px 40px 72px;
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    display: inline-block;
+    background: var(--off-white);
+    border: 1px solid var(--light-gray);
+    border-radius: 2px;
+    padding: 4px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 28px;
+  }
+
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(48px, 7vw, 80px);
+    font-weight: 400;
+    line-height: 1.0;
+    letter-spacing: -1px;
+    color: var(--black);
+    margin-bottom: 24px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-dark);
+  }
+
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--gray);
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-pills {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 44px;
+  }
+
+  .pill {
+    background: var(--off-white);
+    border: 1px solid var(--light-gray);
+    border-radius: 2px;
+    padding: 6px 16px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--black);
+    letter-spacing: 0.04em;
+  }
+  .pill.gold { background: var(--gold); border-color: var(--gold); color: var(--black); font-weight: 600; }
+
+  /* ── SUBSCRIBE FORM ── */
+  .subscribe-form {
+    display: flex;
+    gap: 0;
+    max-width: 460px;
+    margin: 0 auto;
+    border: 1.5px solid var(--black);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .subscribe-form input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 14px 20px;
+    font-size: 14px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--black);
+    background: var(--white);
+  }
+  .subscribe-form input::placeholder { color: var(--gray); }
+
+  .subscribe-form button {
+    background: var(--black);
+    color: var(--white);
+    border: none;
+    padding: 14px 28px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .subscribe-form button:hover { background: var(--gold); color: var(--black); }
+
+  .hero-note {
+    font-size: 12px;
+    color: var(--gray);
+    margin-top: 14px;
+    letter-spacing: 0.03em;
+  }
+
+  /* ── STATS BAR ── */
+  .stats {
+    background: var(--off-white);
+    border-top: 1px solid var(--light-gray);
+    border-bottom: 1px solid var(--light-gray);
+    padding: 28px 40px;
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--black);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gray);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* ── PREVIEW SECTION ── */
+  .preview-section {
+    padding: 80px 40px;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .preview-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 38px;
+    font-weight: 400;
+    color: var(--black);
+    line-height: 1.15;
+    margin-bottom: 48px;
+    letter-spacing: -0.5px;
+  }
+
+  /* ── PREVIEW ── */
+  .digest-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .digest-header {
+    background: var(--black);
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .digest-logo {
+    background: var(--gold);
+    border-radius: 4px;
+    padding: 3px 10px;
+  }
+  .digest-logo span {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: var(--white);
+  }
+  .digest-meta {
+    font-size: 11px;
+    color: #666;
+    letter-spacing: 0.05em;
+  }
+
+  .digest-body {
+    padding: 0;
+  }
+
+  .digest-section {
+    padding: 20px 24px 4px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gray);
+    border-bottom: 1px solid var(--light-gray);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .story {
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--light-gray);
+  }
+  .story:last-child { border-bottom: none; }
+
+  .story-num {
+    font-size: 10px;
+    color: #ccc;
+    font-weight: 500;
+    margin-bottom: 6px;
+    letter-spacing: 0.06em;
+  }
+
+  .story-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 7px;
+    color: var(--white);
+    background: var(--black);
+  }
+  .story-tag.banking { background: #185FA5; }
+  .story-tag.politics { background: #333; }
+  .story-tag.energy { background: var(--green); }
+  .story-tag.good { background: var(--green); }
+
+  .story-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--black);
+    line-height: 1.25;
+    margin-bottom: 7px;
+    letter-spacing: -0.2px;
+  }
+
+  .story-body {
+    font-size: 12px;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .story-source {
+    font-size: 10px;
+    color: var(--gray);
+    margin-top: 6px;
+    letter-spacing: 0.03em;
+  }
+
+  .good-story {
+    background: #F2F9EA;
+  }
+
+  /* ── WHY SECTION ── */
+  .why-section {
+    background: var(--off-white);
+    border-top: 1px solid var(--light-gray);
+    border-bottom: 1px solid var(--light-gray);
+    padding: 80px 40px;
+  }
+
+  .why-inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+  }
+
+  .why-card {
+    background: var(--white);
+    border: 1px solid var(--light-gray);
+    padding: 28px 24px;
+    border-radius: 2px;
+  }
+
+  .why-icon {
+    font-size: 28px;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .why-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 10px;
+    letter-spacing: -0.2px;
+  }
+
+  .why-text {
+    font-size: 13px;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* ── BOTTOM CTA ── */
+  .bottom-cta {
+    padding: 88px 40px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .bottom-cta h2 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--black);
+    margin-bottom: 20px;
+    letter-spacing: -0.5px;
+  }
+
+  .bottom-cta p {
+    font-size: 16px;
+    color: var(--gray);
+    margin-bottom: 40px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    color: #555;
+    padding: 40px;
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    line-height: 2;
+  }
+
+  footer .footer-logo {
+    background: var(--gold);
+    border-radius: 4px;
+    padding: 3px 12px;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  footer .footer-logo span {
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+    color: var(--white);
+  }
+
+  footer a { color: #555; text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    .hero { padding: 56px 24px 56px; }
+    .stats { gap: 32px; padding: 24px 20px; }
+    .preview-section { padding: 56px 20px; }
+    .why-section { padding: 56px 20px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .bottom-cta { padding: 56px 20px; }
+    footer { padding: 32px 20px; }
+    .subscribe-form { flex-direction: column; border-radius: 4px; }
+    .subscribe-form input { border-bottom: 1px solid var(--light-gray); }
+    .subscribe-form button { border-radius: 0 0 4px 4px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  🇮🇪 &nbsp; Ireland's essential news — no ads, no noise, just facts &nbsp; 🇮🇪
+</div>
+
+<nav>
+  <div class="nav-logo"><span>MiNiT</span></div>
+  <ul class="nav-links">
+    <li><a href="#preview">Sample Edition</a></li>
+    <li><a href="#why">Why MiNiT</a></li>
+    <li><a href="#subscribe" class="nav-cta">Subscribe Free</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Stay <em>in it.</em><br>Ireland &amp; World in 10 minutes.</h1>
+  <p class="hero-sub">12 stories that matter. Zero ads. Zero opinions. Just the facts you need to understand Ireland and the world — delivered to your inbox.</p>
+  <div class="hero-pills">
+    <span class="pill">🇮🇪 5 Ireland stories</span>
+    <span class="pill">🌍 5 World stories</span>
+    <span class="pill gold">😊 2 Good News</span>
+  </div>
+  <div id="subscribe" class="subscribe-form">
+    <input type="email" placeholder="Your email address">
+    <button type="submit">Subscribe Free →</button>
+  </div>
+  <p class="hero-note">Free. No credit card. Unsubscribe anytime.</p>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">12</div>
+    <div class="stat-label">Stories per edition</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">10 min</div>
+    <div class="stat-label">Average read time</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">0</div>
+    <div class="stat-label">Ads. Ever.</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">30+</div>
+    <div class="stat-label">Sources monitored</div>
+  </div>
+</div>
+
+<!-- PREVIEW -->
+<section class="preview-section" id="preview">
+  <div class="section-label">Sample Edition</div>
+  <h2 class="preview-title">What a MiNiT edition looks like</h2>
+
+  <div class="digest-card">
+    <div class="digest-header">
+      <div class="digest-logo"><span>MiNiT</span></div>
+      <div class="digest-meta">Saturday, 18 April 2026 · 12 stories · 10 min</div>
+    </div>
+    <div class="digest-body">
+
+      <div class="digest-section">🇮🇪 Ireland</div>
+
+      <div class="story">
+        <div class="story-num">01</div>
+        <div class="story-tag banking">Banking</div>
+        <div class="story-headline">State sells PTSB to Austrian bank BAWAG for €1.62bn</div>
+        <div class="story-body">Austria's BAWAG Group agreed to buy PTSB at €2.97 per share, returning €931m to the State — ending 17 years of crisis-era public ownership. BAWAG pledges to maintain PTSB's 98 branches for at least 24 months.</div>
+        <div class="story-source">RTÉ News · Irish Times · The Journal</div>
+      </div>
+
+      <div class="story">
+        <div class="story-num">02</div>
+        <div class="story-tag politics">Politics · Immigration</div>
+        <div class="story-headline">President refers asylum bill to Council of State</div>
+        <div class="story-body">President Catherine Connolly convened the Council of State under Article 26 to consider the constitutionality of the International Protection Bill 2026. The bill passed the Dáil 86–62 on Wednesday. She may refer it to the Supreme Court — only the 5th invocation of this power.</div>
+        <div class="story-source">RTÉ News · Irish Times · President.ie</div>
+      </div>
+
+      <div class="story">
+        <div class="story-num">03</div>
+        <div class="story-tag energy">Energy · Cost of Living</div>
+        <div class="story-headline">Electricity bills set to rise within weeks</div>
+        <div class="story-body">Senior energy industry sources warn household electricity prices will increase soon, regardless of Iran war negotiations. Gas prices nearly doubled in March after the Strait of Hormuz closed. Ireland has no LNG terminal and imports 80% of its gas via the UK.</div>
+        <div class="story-source">Irish Times · RTÉ</div>
+      </div>
+
+      <div class="digest-section">🌍 World</div>
+
+      <div class="story">
+        <div class="story-num">04</div>
+        <div class="story-tag">Middle East · Energy</div>
+        <div class="story-headline">Europe has 6 weeks' jet fuel supply left — IEA</div>
+        <div class="story-body">IEA head Fatih Birol warned Europe has approximately six weeks of jet fuel reserves remaining. Ryanair CEO O'Leary warned 5–10% of May–July flights may be cancelled. Jet fuel averaged $195/barrel — more than double last year's average.</div>
+        <div class="story-source">CNBC · Fortune · IEA</div>
+      </div>
+
+      <div class="digest-section">😊 Good News</div>
+
+      <div class="story good-story">
+        <div class="story-num">05</div>
+        <div class="story-tag good">Ireland · Sport</div>
+        <div class="story-headline">Rory McIlroy wins back-to-back Masters — on track to be Ireland's first sporting billionaire</div>
+        <div class="story-body">McIlroy won his second consecutive US Masters at Augusta on 13 April, joining Nicklaus, Faldo and Woods as the only back-to-back winners. Biographer Alan Shipnuck called his path to becoming Ireland's first sporting billionaire "a mathematical certainty."</div>
+        <div class="story-source">Irish Times · ESPN · RTÉ</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why-section" id="why">
+  <div class="why-inner">
+    <div class="section-label">Why MiNiT</div>
+    <h2 class="preview-title">Built for people who are <em>in it</em></h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <span class="why-icon">📰</span>
+        <div class="why-title">Just facts</div>
+        <p class="why-text">No opinions. No adjectives. No spin. Every story includes specific numbers, dates and sources. You decide what to think.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">⏱</span>
+        <div class="why-title">10 minutes</div>
+        <p class="why-text">12 stories written in 2–4 sentences each. Read on the DART, over coffee, or between meetings. Done before your stop.</p>
+      </div>
+      <div class="why-card">
+        <span class="why-icon">🚫</span>
+        <div class="why-title">Zero ads</div>
+        <p class="why-text">MiNiT is reader-supported. No advertisers. No sponsored content. No tracking. Just news — the way it should be.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <h2>because you're <em style="font-style:italic;color:var(--gold-dark)">in it</em></h2>
+  <p>Join thousands of readers who start their morning with MiNiT. Free. Always.</p>
+  <div class="subscribe-form">
+    <input type="email" placeholder="Your email address">
+    <button type="submit">Subscribe Free →</button>
+  </div>
+  <p class="hero-note" style="margin-top:14px">No credit card. Unsubscribe anytime.</p>
+</section>
+
+<footer>
+  <div class="footer-logo"><span>MiNiT</span></div><br>
+  Ireland's essential news<br>
+  No ads. No opinions. Just facts. &nbsp;·&nbsp; because you're in it<br>
+  <span style="color:#333;font-size:11px">© 2026 MiNiT. All rights reserved.</span>
+</footer>
+
+</body>
+</html>
