@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiNiT.betting — Betting as Investment</title>
+<meta name="description" content="Betting is not gambling. It is capital allocation. Learn the framework that separates investors from gamblers.">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#F9F8F5;
+  --bg2:#F2F0EB;
+  --bg3:#E8E5DD;
+  --border:#E2DED6;
+  --border2:#CECAB8;
+  --text:#111009;
+  --text2:#6B6558;
+  --text3:#B0A99E;
+  --green:#1C5C3A;
+  --green-light:#EAF3EE;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:14px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* NAV */
+nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(249,248,245,0.96);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;
+  padding:0 40px;height:56px;
+}
+.logo{
+  font-family:var(--mono);font-size:13px;font-weight:500;
+  color:var(--text);letter-spacing:-0.01em;
+  margin-right:40px;display:flex;align-items:center;gap:6px;
+  text-decoration:none;
+}
+.logo-sq{width:7px;height:7px;background:var(--green);border-radius:1px;flex-shrink:0}
+.logo-sub{color:var(--text3)}
+.nav-links{display:flex;flex:1}
+.nav-links a{
+  padding:0 14px;height:56px;display:flex;align-items:center;
+  font-size:12px;font-weight:400;color:var(--text2);
+  letter-spacing:0.02em;text-decoration:none;
+  border-bottom:1.5px solid transparent;
+  transition:color .15s,border-color .15s;white-space:nowrap;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a.active{color:var(--text);border-bottom-color:var(--text)}
+.nav-right{margin-left:auto;display:flex;align-items:center;gap:12px}
+.nav-tag{
+  font-family:var(--mono);font-size:9px;letter-spacing:0.12em;
+  text-transform:uppercase;color:var(--green);
+  border:1px solid rgba(28,92,58,0.25);padding:3px 8px;border-radius:2px;
+}
+
+/* HERO */
+.hero{
+  display:grid;grid-template-columns:1fr 1fr;
+  min-height:480px;border-bottom:1px solid var(--border);
+}
+.hero-left{
+  padding:80px 48px 72px 40px;
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.hero-right{
+  padding:80px 40px 72px 48px;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+.hero-kicker{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.16em;
+  text-transform:uppercase;color:var(--text3);
+  margin-bottom:24px;display:flex;align-items:center;gap:10px;
+}
+.hero-kicker::before{content:'';width:24px;height:1px;background:var(--text3);display:block}
+h1{
+  font-family:var(--serif);font-size:56px;line-height:1.02;
+  letter-spacing:-0.03em;color:var(--text);margin-bottom:0;
+}
+h1 em{font-style:italic;color:var(--green)}
+.hero-statement{
+  font-family:var(--mono);font-size:11px;color:var(--text3);
+  letter-spacing:0.06em;border-top:1px solid var(--border);
+  padding-top:20px;margin-top:32px;
+}
+.hero-thesis{
+  font-size:16px;color:var(--text2);line-height:1.8;
+  font-weight:300;margin-bottom:32px;
+}
+.hero-thesis strong{color:var(--text);font-weight:500}
+.hero-ctas{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.btn-dark{
+  font-family:var(--sans);font-size:12px;font-weight:500;
+  background:var(--text);color:var(--bg);
+  border:none;padding:12px 24px;border-radius:3px;
+  text-decoration:none;display:inline-block;
+  letter-spacing:0.02em;transition:opacity .15s;
+}
+.btn-dark:hover{opacity:0.8}
+.btn-outline{
+  font-family:var(--sans);font-size:12px;font-weight:400;
+  background:transparent;color:var(--text2);
+  border:1px solid var(--border2);padding:12px 22px;border-radius:3px;
+  text-decoration:none;display:inline-block;
+  transition:border-color .15s,color .15s;
+}
+.btn-outline:hover{border-color:var(--text);color:var(--text)}
+.hero-proof{
+  display:grid;grid-template-columns:1fr 1fr;gap:1px;
+  background:var(--border);border:1px solid var(--border);
+  border-radius:4px;overflow:hidden;
+}
+.proof-cell{
+  background:var(--bg);padding:18px 20px;
+}
+.proof-val{
+  font-family:var(--serif);font-size:28px;line-height:1;
+  color:var(--text);margin-bottom:4px;
+}
+.proof-label{font-size:11px;color:var(--text3);font-weight:300}
+
+/* THESIS STRIP */
+.thesis-strip{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  border-bottom:1px solid var(--border);
+}
+.thesis-cell{
+  padding:36px 32px;border-right:1px solid var(--border);
+}
+.thesis-cell:last-child{border-right:none}
+.thesis-num{
+  font-family:var(--mono);font-size:10px;color:var(--text3);
+  margin-bottom:20px;letter-spacing:0.08em;
+}
+.thesis-title{
+  font-family:var(--serif);font-size:22px;line-height:1.2;
+  color:var(--text);margin-bottom:12px;
+}
+.thesis-title em{font-style:italic;color:var(--green)}
+.thesis-body{font-size:12px;color:var(--text2);line-height:1.75;font-weight:300}
+.thesis-rule{
+  display:block;margin-top:20px;padding-top:16px;
+  border-top:1px solid var(--border);
+  font-family:var(--mono);font-size:10px;color:var(--green);
+  letter-spacing:0.04em;
+}
+
+/* COMPARISON */
+.comparison{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-bottom:1px solid var(--border);
+}
+.comp-left{
+  padding:52px 40px;border-right:1px solid var(--border);
+}
+.comp-right{
+  padding:52px 40px;
+}
+.comp-label{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.12em;
+  text-transform:uppercase;margin-bottom:28px;padding-bottom:12px;
+  border-bottom:1px solid var(--border);
+}
+.comp-label.bad{color:#8C3A2A}
+.comp-label.good{color:var(--green)}
+.comp-row{
+  display:flex;align-items:flex-start;gap:14px;
+  padding:12px 0;border-bottom:1px solid var(--border);
+}
+.comp-row:last-child{border-bottom:none}
+.comp-marker{
+  font-family:var(--mono);font-size:11px;
+  flex-shrink:0;margin-top:1px;
+}
+.comp-marker.x{color:#8C3A2A}
+.comp-marker.check{color:var(--green)}
+.comp-text{font-size:13px;color:var(--text2);line-height:1.55}
+.comp-text strong{color:var(--text);font-weight:500}
+
+/* FRAMEWORK */
+.framework{
+  padding:64px 40px;border-bottom:1px solid var(--border);
+}
+.section-hed{
+  display:flex;align-items:baseline;gap:16px;margin-bottom:40px;
+}
+.section-hed h2{
+  font-family:var(--serif);font-size:34px;line-height:1.1;
+  letter-spacing:-0.02em;color:var(--text);
+}
+.section-hed h2 em{font-style:italic;color:var(--green)}
+.section-hed-sub{
+  font-family:var(--mono);font-size:10px;color:var(--text3);
+  letter-spacing:0.08em;
+}
+.framework-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+  background:var(--border);border:1px solid var(--border);
+  border-radius:4px;overflow:hidden;
+}
+.fw-cell{
+  background:var(--bg);padding:28px 24px;
+  transition:background .15s;cursor:default;
+}
+.fw-cell:hover{background:var(--bg2)}
+.fw-step{
+  font-family:var(--mono);font-size:10px;color:var(--text3);
+  margin-bottom:16px;letter-spacing:0.08em;
+}
+.fw-title{
+  font-family:var(--serif);font-size:18px;line-height:1.2;
+  color:var(--text);margin-bottom:10px;
+}
+.fw-title em{font-style:italic;color:var(--green)}
+.fw-body{font-size:11px;color:var(--text2);line-height:1.7;font-weight:300}
+
+/* CONTENT */
+.content-strip{
+  display:grid;grid-template-columns:2fr 1fr;
+  border-bottom:1px solid var(--border);
+}
+.content-main{border-right:1px solid var(--border)}
+.content-side{}
+.col-hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 24px;border-bottom:1px solid var(--border);
+}
+.col-hdr-title{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text2);
+}
+.col-hdr-more{
+  font-size:11px;color:var(--text3);
+  text-decoration:none;transition:color .15s;
+}
+.col-hdr-more:hover{color:var(--text2)}
+
+.art-featured{
+  padding:28px 24px;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:1fr auto;gap:24px;align-items:start;
+}
+.art-cat{
+  font-family:var(--mono);font-size:9px;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text3);margin-bottom:8px;
+}
+.art-title-lg{
+  font-family:var(--serif);font-size:22px;line-height:1.2;
+  color:var(--text);margin-bottom:8px;
+  text-decoration:none;display:block;
+}
+.art-title-lg:hover{color:var(--green)}
+.art-title-lg em{font-style:italic}
+.art-excerpt{font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:12px;font-weight:300}
+.art-meta{display:flex;gap:8px;align-items:center}
+.art-meta-t{font-family:var(--mono);font-size:10px;color:var(--text3)}
+.art-badge{
+  font-family:var(--mono);font-size:9px;
+  padding:2px 7px;border-radius:2px;
+  border:1px solid var(--border);color:var(--text3);
+}
+.art-badge.essential{
+  border-color:rgba(28,92,58,0.3);
+  color:var(--green);background:var(--green-light);
+}
+.art-num-box{
+  width:48px;height:48px;border:1px solid var(--border);
+  border-radius:3px;display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:22px;color:var(--text3);
+  flex-shrink:0;
+}
+
+.art-row{
+  display:flex;gap:14px;padding:16px 24px;
+  border-bottom:1px solid var(--border);
+  text-decoration:none;display:flex;transition:background .12s;
+}
+.art-row:last-child{border-bottom:none}
+.art-row:hover{background:var(--bg2)}
+.art-row-n{
+  font-family:var(--mono);font-size:11px;color:var(--text3);
+  flex-shrink:0;width:20px;padding-top:2px;
+}
+.art-row-title{
+  font-size:13px;font-weight:500;color:var(--text);
+  line-height:1.4;margin-bottom:3px;
+}
+.art-row-meta{font-family:var(--mono);font-size:10px;color:var(--text3)}
+
+/* SIDEBAR */
+.sb-block{padding:20px 20px;border-bottom:1px solid var(--border)}
+.sb-block:last-child{border-bottom:none}
+.sb-title{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text3);
+  margin-bottom:14px;
+}
+.stat-list{}
+.stat-item{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:9px 0;border-bottom:1px solid var(--border);
+}
+.stat-item:last-child{border-bottom:none}
+.stat-name{font-size:12px;color:var(--text2)}
+.stat-val{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--text)}
+.stat-sub{font-family:var(--mono);font-size:10px;color:var(--text3)}
+
+.term-list{}
+.term-item{
+  padding:10px 0;border-bottom:1px solid var(--border);
+  text-decoration:none;display:block;transition:background .12s;
+}
+.term-item:last-child{border-bottom:none}
+.term-word{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  color:var(--green);margin-bottom:2px;
+}
+.term-def{font-size:11px;color:var(--text3);line-height:1.5}
+
+/* DARK STRIP */
+.dark-strip{
+  background:var(--text);
+  display:grid;grid-template-columns:1fr 1fr 1fr 1fr;
+  border-bottom:1px solid var(--border);
+}
+.ds-cell{
+  padding:32px 28px;border-right:1px solid rgba(255,255,255,0.07);
+}
+.ds-cell:last-child{border-right:none}
+.ds-val{
+  font-family:var(--serif);font-size:38px;line-height:1;
+  color:#F9F8F5;margin-bottom:8px;letter-spacing:-0.02em;
+}
+.ds-val em{font-style:italic;color:rgba(249,248,245,0.3)}
+.ds-label{font-size:11px;color:rgba(249,248,245,0.38);font-weight:300;line-height:1.5}
+
+/* MANIFESTO QUOTE */
+.manifesto-quote{
+  padding:64px 40px;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:start;
+}
+.q-mark{
+  font-family:var(--serif);font-size:96px;line-height:0.75;
+  color:var(--border);flex-shrink:0;
+}
+.q-body{}
+.q-text{
+  font-family:var(--serif);font-size:28px;line-height:1.38;
+  color:var(--text);letter-spacing:-0.015em;margin-bottom:20px;
+}
+.q-text em{font-style:italic;color:var(--green)}
+.q-attr{
+  display:flex;align-items:center;gap:12px;
+}
+.q-attr-line{width:24px;height:1px;background:var(--border2)}
+.q-attr-text{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.08em}
+
+/* FOOTER */
+footer{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  border-top:1px solid var(--border);background:var(--bg2);
+}
+.ft-col{padding:28px 32px;border-right:1px solid var(--border)}
+.ft-col:last-child{border-right:none}
+.ft-logo-wrap{display:flex;align-items:center;gap:6px;margin-bottom:10px}
+.ft-logo-sq{width:6px;height:6px;background:var(--green);border-radius:1px}
+.ft-logo-text{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--text)}
+.ft-tagline{font-size:12px;color:var(--text3);margin-bottom:0;font-weight:300}
+.ft-col-title{
+  font-family:var(--mono);font-size:10px;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--text3);margin-bottom:14px;
+}
+.ft-links{display:flex;flex-direction:column;gap:8px}
+.ft-link{font-size:12px;color:var(--text2);text-decoration:none;transition:color .12s}
+.ft-link:hover{color:var(--text)}
+.ft-disc{font-size:11px;color:var(--text3);line-height:1.6;font-weight:300}
+.ft-copy{
+  grid-column:1/-1;padding:14px 32px;
+  border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+}
+.ft-copy-text{font-size:11px;color:var(--text3)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .hero{grid-template-columns:1fr}
+  .hero-left{border-right:none;border-bottom:1px solid var(--border);padding:48px 24px 40px}
+  .hero-right{padding:40px 24px 48px}
+  h1{font-size:42px}
+  .thesis-strip{grid-template-columns:1fr}
+  .thesis-cell{border-right:none;border-bottom:1px solid var(--border)}
+  .comparison{grid-template-columns:1fr}
+  .comp-left{border-right:none;border-bottom:1px solid var(--border)}
+  .framework{padding:40px 20px}
+  .framework-grid{grid-template-columns:1fr 1fr}
+  .content-strip{grid-template-columns:1fr}
+  .content-main{border-right:none}
+  .dark-strip{grid-template-columns:1fr 1fr}
+  .manifesto-quote{padding:40px 20px;gap:16px}
+  .q-text{font-size:22px}
+  footer{grid-template-columns:1fr}
+  .ft-col{border-right:none}
+  .ft-copy{flex-direction:column;gap:6px;text-align:center}
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+nav{animation:fadeUp .25s ease both}
+.hero{animation:fadeUp .3s .04s ease both}
+.thesis-strip{animation:fadeUp .3s .08s ease both}
+.comparison{animation:fadeUp .3s .1s ease both}
+.framework{animation:fadeUp .3s .12s ease both}
+.content-strip{animation:fadeUp .3s .14s ease both}
+.dark-strip{animation:fadeUp .3s .16s ease both}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo">
+    <div class="logo-sq"></div>MiNiT<span class="logo-sub">.betting</span>
+  </a>
+  <div class="nav-links">
+    <a href="#framework" class="active">The Framework</a>
+    <a href="#psychology">Psychology</a>
+    <a href="#numbers">By the Numbers</a>
+    <a href="#glossary">Glossary</a>
+    <a href="#blog">Blog</a>
+  </div>
+  <div class="nav-right">
+    <span class="nav-tag">Betting as Investment</span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="hero-kicker">A new framework for serious participants</div>
+      <h1>Betting<br>is not<br><em>gambling.</em></h1>
+    </div>
+    <div class="hero-statement">
+      MiNiT.betting — where capital allocation meets probability markets
+    </div>
+  </div>
+  <div class="hero-right">
+    <div>
+      <p class="hero-thesis">
+        Every professional investor seeks <strong>mispriced assets</strong>. Every value bettor seeks <strong>mispriced odds</strong>. The instrument differs. The discipline is identical.
+        <br><br>
+        This site exists for those who treat betting as what it actually is: a <strong>systematic, data-driven investment process</strong> with quantifiable edge, risk management, and measurable returns.
+      </p>
+      <div class="hero-ctas">
+        <a href="#framework" class="btn-dark">Read the Framework</a>
+        <a href="#numbers" class="btn-outline">By the Numbers</a>
+      </div>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-cell">
+        <div class="proof-val">+EV</div>
+        <div class="proof-label">The only metric that matters long-term</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-val">CLV</div>
+        <div class="proof-label">Closing line value — the investor's benchmark</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-val">Kelly</div>
+        <div class="proof-label">Position sizing like a portfolio manager</div>
+      </div>
+      <div class="proof-cell">
+        <div class="proof-val">ROI</div>
+        <div class="proof-label">Measured over thousands of decisions, not one</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THESIS STRIP -->
+<section class="thesis-strip" id="framework">
+  <div class="thesis-cell">
+    <div class="thesis-num">01 — The thesis</div>
+    <div class="thesis-title">Markets are<br><em>inefficient.</em><br>That is the edge.</div>
+    <p class="thesis-body">Bookmakers set prices based on public sentiment, liability management and volume — not purely on probability. Where their model is wrong, an informed participant with superior data holds a structural advantage. This is no different from equity mispricing.</p>
+    <span class="thesis-rule">Expected Value = (Prob x Odds) - 1</span>
+  </div>
+  <div class="thesis-cell">
+    <div class="thesis-num">02 — The discipline</div>
+    <div class="thesis-title">Process is the<br>only <em>moat.</em></div>
+    <p class="thesis-body">Short-term results are noise. The investor's advantage emerges only across large sample sizes. A losing month with correct process is success. A winning month with incorrect process is a liability. Discipline separates participants from professionals.</p>
+    <span class="thesis-rule">Track every decision. Judge the process, not the outcome.</span>
+  </div>
+  <div class="thesis-cell">
+    <div class="thesis-num">03 — The risk</div>
+    <div class="thesis-title">Variance will<br><em>test</em> you.</div>
+    <p class="thesis-body">Even a 5% edge produces losing runs of 20, 30, 50 bets. Without understanding variance, a sound strategy gets abandoned at exactly the wrong moment. Kelly Criterion, bankroll structuring and drawdown limits exist for one reason: to keep you in the game.</p>
+    <span class="thesis-rule">Ruin is permanent. Drawdown is temporary.</span>
+  </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="comparison">
+  <div class="comp-left">
+    <div class="comp-label bad">The gambler</div>
+    <div class="comp-row">
+      <span class="comp-marker x">x</span>
+      <span class="comp-text">Bets on <strong>feelings</strong>, form, loyalty or narrative</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-marker x">x</span>
+      <span class="comp-text">Judges success by <strong>last weekend's result</strong></span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-marker x">x</span>
+      <span class="comp-text">No staking plan — chases losses, doubles up on confidence</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-marker x">x</span>
+      <span class="comp-text">Cannot define what <strong>edge</strong> means or how to measure it</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-marker x">x</span>
+      <span class="comp-text">Stops when it's working, continues when it's not</span>
+    </div>
+  </div>
+  <div class="comp-right">
+    <div class="comp-label good">The investor</div>
+    <div class="comp-row">
+      <span class="comp-marker check">+</span>
+      <span class="comp-text">Bets only where <strong>Expected Value is positive</strong></span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-marker check">+</span>
+      <span class="comp-text">Judges success by <strong>closing line value</strong> over 500+ bets</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-marker check">+</span>
+      <span class="comp-text">Uses <strong>fractional Kelly</strong> — never risks ruin</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-marker check">+</span>
+      <span class="comp-text">Quantifies edge, tracks ROI, adjusts model when data demands it</span>
+    </div>
+    <div class="comp-row">
+      <span class="comp-marker check">+</span>
+      <span class="comp-text">Trusts the <strong>process</strong>, not the outcome of any single bet</span>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section class="framework">
+  <div class="section-hed">
+    <h2>The investment <em>framework</em></h2>
+    <span class="section-hed-sub">// four pillars</span>
+  </div>
+  <div class="framework-grid">
+    <div class="fw-cell">
+      <div class="fw-step">Step 01</div>
+      <div class="fw-title"><em>Find</em> the edge</div>
+      <p class="fw-body">Build or use a probability model that outperforms the market. This is your alpha. Without it, nothing else matters. Sources: statistical models, market inefficiencies, line movement analysis, CLV patterns.</p>
+    </div>
+    <div class="fw-cell">
+      <div class="fw-step">Step 02</div>
+      <div class="fw-title"><em>Size</em> correctly</div>
+      <p class="fw-body">Apply fractional Kelly Criterion to determine stake. Never more than 2-3% of bankroll on any single position. Variance is your enemy. Ruin is permanent. Drawdown is survivable.</p>
+    </div>
+    <div class="fw-cell">
+      <div class="fw-step">Step 03</div>
+      <div class="fw-title"><em>Execute</em> without emotion</div>
+      <p class="fw-body">Place bets at the best available price, immediately. Beat the closing line. Every delay is value leak. Psychological discipline is what separates theoretical edge from realised returns.</p>
+    </div>
+    <div class="fw-cell">
+      <div class="fw-step">Step 04</div>
+      <div class="fw-title"><em>Track</em> everything</div>
+      <p class="fw-body">Log every bet: market, odds, closing line, stake, result. Review monthly. Identify if your edge is real or luck. The data will tell you what no result-based intuition ever could.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTENT + SIDEBAR -->
+<section class="content-strip">
+  <div class="content-main">
+    <div class="col-hdr">
+      <span class="col-hdr-title">Essential Reading</span>
+      <a href="#" class="col-hdr-more">all articles →</a>
+    </div>
+
+    <div class="art-featured">
+      <div>
+        <div class="art-cat">Foundation — Start Here</div>
+        <a href="#" class="art-title-lg">Expected Value: the only number<br>that <em>matters</em> to a serious bettor</a>
+        <p class="art-excerpt">Before strategy, before staking plans, before everything — there is Expected Value. Understanding EV is the single most important concept separating long-term winners from the 97% who lose. This is where you start.</p>
+        <div class="art-meta">
+          <span class="art-meta-t">10 min</span>
+          <span class="art-meta-t">·</span>
+          <span class="art-badge essential">Essential</span>
+        </div>
+      </div>
+      <div class="art-num-box">01</div>
+    </div>
+
+    <a href="#" class="art-row">
+      <span class="art-row-n">02</span>
+      <div>
+        <div class="art-row-title">Kelly Criterion: sizing positions like a portfolio manager</div>
+        <div class="art-row-meta">Bankroll Management · 8 min · <span class="art-badge" style="display:inline">Advanced</span></div>
+      </div>
+    </a>
+    <a href="#" class="art-row">
+      <span class="art-row-n">03</span>
+      <div>
+        <div class="art-row-title">Closing Line Value: the only honest measure of a bettor's skill</div>
+        <div class="art-row-meta">Performance Metrics · 7 min · <span class="art-badge" style="display:inline">Core</span></div>
+      </div>
+    </a>
+    <a href="#" class="art-row">
+      <span class="art-row-n">04</span>
+      <div>
+        <div class="art-row-title">How bookmakers price markets — and where they get it wrong</div>
+        <div class="art-row-meta">Market Structure · 9 min · <span class="art-badge" style="display:inline">Core</span></div>
+      </div>
+    </a>
+    <a href="#" class="art-row" id="psychology">
+      <span class="art-row-n">05</span>
+      <div>
+        <div class="art-row-title">Variance: why you are drawing conclusions 500 bets too early</div>
+        <div class="art-row-meta">Psychology · 6 min · <span class="art-badge" style="display:inline">Must-read</span></div>
+      </div>
+    </a>
+  </div>
+
+  <div class="content-side">
+    <div class="col-hdr">
+      <span class="col-hdr-title">Key Metrics</span>
+    </div>
+    <div class="sb-block">
+      <div class="sb-title">Performance benchmarks</div>
+      <div class="stat-list">
+        <div class="stat-item">
+          <span class="stat-name">Professional ROI</span>
+          <span class="stat-val">3–8%</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-name">Typical market margin</span>
+          <span class="stat-val">2–6%</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-name">Min sample for edge</span>
+          <span class="stat-val">500+</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-name">Kelly fraction (rec.)</span>
+          <span class="stat-val">25–50%</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-name">Max stake per bet</span>
+          <span class="stat-val">2–3%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sb-block" id="glossary">
+      <div class="sb-title">Glossary</div>
+      <div class="term-list">
+        <a href="#" class="term-item">
+          <div class="term-word">Expected Value (EV)</div>
+          <div class="term-def">Average outcome over infinite repetitions. Positive EV = profitable long-term.</div>
+        </a>
+        <a href="#" class="term-item">
+          <div class="term-word">Closing Line Value (CLV)</div>
+          <div class="term-def">Beating the final market price is the strongest predictor of true edge.</div>
+        </a>
+        <a href="#" class="term-item">
+          <div class="term-word">Overround</div>
+          <div class="term-def">The bookmaker's margin embedded in the odds. Always above 100%.</div>
+        </a>
+        <a href="#" class="term-item">
+          <div class="term-word">Sharp bettor</div>
+          <div class="term-def">A professional whose bets move the market — the opposite of a square.</div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DARK NUMBERS STRIP -->
+<section class="dark-strip" id="numbers">
+  <div class="ds-cell">
+    <div class="ds-val">2.1<em>%</em></div>
+    <div class="ds-label">Average Pinnacle margin — the tightest market available. Your edge must exceed this.</div>
+  </div>
+  <div class="ds-cell">
+    <div class="ds-val">500<em>+</em></div>
+    <div class="ds-label">Minimum bets before ROI data becomes statistically meaningful.</div>
+  </div>
+  <div class="ds-cell">
+    <div class="ds-val">87<em>%</em></div>
+    <div class="ds-label">Of long-term losses are attributable to psychology and staking — not model failure.</div>
+  </div>
+  <div class="ds-cell">
+    <div class="ds-val">0</div>
+    <div class="ds-label">Opinions on this site. Every claim is grounded in probability, data, or measurable process.</div>
+  </div>
+</section>
+
+<!-- MANIFESTO QUOTE -->
+<section class="manifesto-quote">
+  <div class="q-mark">"</div>
+  <div class="q-body">
+    <div class="q-text">
+      The difference between a gambler and an investor<br>
+      is not the instrument. It is the <em>rigour</em><br>
+      applied to every single decision.
+    </div>
+    <div class="q-attr">
+      <div class="q-attr-line"></div>
+      <div class="q-attr-text">MiNiT.betting — editorial principle</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-col">
+    <div class="ft-logo-wrap">
+      <div class="ft-logo-sq"></div>
+      <span class="ft-logo-text">MiNiT.betting</span>
+    </div>
+    <p class="ft-tagline">Betting as investment.<br>No noise. No tips. No hype.</p>
+  </div>
+  <div class="ft-col" id="blog">
+    <div class="ft-col-title">Navigate</div>
+    <div class="ft-links">
+      <a href="#framework" class="ft-link">The Framework</a>
+      <a href="#psychology" class="ft-link">Psychology</a>
+      <a href="#numbers" class="ft-link">By the Numbers</a>
+      <a href="#glossary" class="ft-link">Glossary</a>
+      <a href="#" class="ft-link">Blog</a>
+    </div>
+  </div>
+  <div class="ft-col">
+    <div class="ft-col-title">Disclaimer</div>
+    <p class="ft-disc">MiNiT.betting is an educational resource. Nothing published here constitutes financial or betting advice. All participation in betting markets involves risk of financial loss. 18+ only. Please bet responsibly.</p>
+  </div>
+  <div class="ft-copy">
+    <span class="ft-copy-text">© 2025 MiNiT. All rights reserved.</span>
+    <span class="ft-copy-text">Intelligence over intuition.</span>
+  </div>
+</footer>
+
+</body>
+</html>
