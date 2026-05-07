@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiNiT..betting | The Framework</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:ital,wght@0,700;1,700&family=JetBrains+Mono&display=swap');
+
+        :root {
+            --bg-color: #faf8f5;
+            --text-main: #1a1c1a;
+            --text-muted: #626662;
+            --accent-green: #2d4a2e;
+            --accent-red: #c66e63;
+            --border-color: #e0ddd8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .logo span {
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.2s;
+        }
+
+        .nav-links li a:hover {
+            color: var(--text-main);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            padding: 80px 0 120px 0;
+        }
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 82px;
+            line-height: 0.95;
+            margin-bottom: 50px;
+            letter-spacing: -2px;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+        }
+
+        .label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .hero-text {
+            font-size: 16px;
+            color: var(--text-main);
+            font-weight: 400;
+        }
+
+        .hero-text.muted {
+            color: var(--text-muted);
+        }
+
+        /* Variance Graphic */
+        .visual-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .variance-card {
+            text-align: center;
+            position: relative;
+        }
+
+        .triangle {
+            width: 0;
+            height: 0;
+            border-left: 140px solid transparent;
+            border-right: 140px solid transparent;
+            border-bottom: 240px solid var(--accent-red);
+            position: relative;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .triangle::after {
+            content: '!';
+            position: absolute;
+            bottom: -180px;
+            left: -5px;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 60px;
+        }
+
+        .variance-title {
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 14px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .variance-desc {
+            color: var(--text-muted);
+            font-size: 14px;
+            font-style: italic;
+        }
+
+        /* Bottom Section: Pillars */
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            padding: 80px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .pillar-item h3 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pillar-item h3 span {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--accent-green);
+            font-size: 11px;
+        }
+
+        .pillar-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .pillar-content {
+            font-size: 14px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .math-box {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            background: #f0eee9;
+            padding: 12px;
+            border-radius: 4px;
+            color: var(--accent-green);
+        }
+
+        .quote-footer {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 15px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <nav>
+            <div class="logo">MiNiT<span>.betting</span></div>
+            <ul class="nav-links">
+                <li><a href="#">The Framework</a></li>
+                <li><a href="#">Psychology</a></li>
+                <li><a href="#">By the Numbers</a></li>
+                <li><a href="#">Glossary</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">The Market<br>Is Always Right.</h1>
+                
+                <div class="hero-grid">
+                    <div class="hero-block">
+                        <span class="label">The Illusion</span>
+                        <p class="hero-text muted">Until it isn't. And when it isn't, that is precisely where the edge lives — in the gap between public sentiment and true probability.</p>
+                    </div>
+                    <div class="hero-block">
+                        <span class="label">The Reality</span>
+                        <p class="hero-text">Professional participants don't predict outcomes. They identify mispriced expectations and act with discipline across large sample sizes.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visual-container">
+                <div class="variance-card">
+                    <div class="triangle"></div>
+                    <div class="variance-title">Variance</div>
+                    <div class="variance-desc">even a 5% edge produces 30-bet losing runs</div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="pillars">
+            <div class="pillar-item">
+                <h3><span>01</span> The Thesis</h3>
+                <div class="pillar-title">Markets are <em>inefficient</em>.</div>
+                <p class="pillar-content">Bookmakers set prices based on public sentiment, liability management and volume — not purely on probability.</p>
+                <div class="math-box">Expected Value = (Prob × Odds) - 1</div>
+            </div>
+
+            <div class="pillar-item">
+                <h3><span>02</span> The Discipline</h3>
+                <div class="pillar-title">Process is the only <em>moat</em>.</div>
+                <p class="pillar-content">Short-term results are noise. Advantage emerges only across large sample sizes. A losing month with correct process is success.</p>
+                <div class="quote-footer">Track every decision. Judge the process, not the outcome.</div>
+            </div>
+
+            <div class="pillar-item">
+                <h3><span>03</span> The Risk</h3>
+                <div class="pillar-title">Variance will <em>test</em> you.</div>
+                <p class="pillar-content">Even a 5% edge produces losing runs of 20, 30, or 50 bets. Kelly Criterion exists for one reason: to keep you in the game.</p>
+                <div class="quote-footer">Ruin is permanent. Drawdown is temporary.</div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
