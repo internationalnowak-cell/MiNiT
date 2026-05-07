@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MiNiT.betting — Betting as Investment</title>
+<meta name="description" content="Betting is not gambling. It is capital allocation.">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#fff;
+  --border:#E8E6E1;
+  --text:#111;
+  --text2:#555;
+  --text3:#999;
+  --blue:#1a3a6b;
+  --blue-mid:#2952a3;
+  --blue-light:#f0f4fb;
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+}
+html,body{height:100%;margin:0;overflow:hidden}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:var(--sans);-webkit-font-smoothing:antialiased;
+  display:flex;flex-direction:column;
+}
+
+/* NAV */
+nav{
+  border-bottom:3px solid var(--blue);
+  padding:0 40px;
+  height:72px;flex-shrink:0;
+  display:flex;align-items:center;
+  background:#fff;position:relative;
+}
+.logo-wrap{
+  position:absolute;left:50%;transform:translateX(-50%);
+  display:flex;align-items:baseline;gap:0;text-decoration:none;
+}
+.logo-text{
+  font-family:var(--sans);font-size:32px;font-weight:600;
+  color:var(--blue);letter-spacing:-0.04em;
+}
+.logo-dot{
+  width:10px;height:10px;background:var(--blue-mid);
+  border-radius:2px;margin:0 2px 3px 2px;display:inline-block;
+}
+.logo-betting{
+  font-family:var(--sans);font-size:32px;font-weight:300;
+  color:var(--text2);letter-spacing:-0.02em;
+}
+.nav-right{
+  margin-left:auto;
+  display:flex;gap:6px;align-items:center;
+}
+.nav-link{
+  font-size:12px;font-weight:400;color:var(--text2);
+  text-decoration:none;padding:7px 14px;border-radius:3px;
+  border:1px solid var(--border);
+  transition:all .15s;white-space:nowrap;
+}
+.nav-link:hover{color:var(--blue);border-color:var(--blue)}
+
+/* MAIN — three columns, full remaining height */
+main{
+  flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;
+  overflow:hidden;
+}
+.col{
+  border-right:1px solid var(--border);
+  display:flex;flex-direction:column;
+  padding:40px 36px;
+  overflow:hidden;
+}
+.col:last-child{border-right:none}
+
+.col-num{
+  font-family:var(--mono);font-size:11px;letter-spacing:0.12em;
+  color:var(--blue-mid);margin-bottom:18px;
+  text-transform:uppercase;
+}
+.col-title{
+  font-family:var(--serif);font-size:26px;line-height:1.12;
+  color:var(--blue);letter-spacing:-0.02em;margin-bottom:6px;
+}
+.col-title em{font-style:italic}
+.col-subtitle{
+  font-family:var(--sans);font-size:13px;font-weight:500;
+  color:var(--text);margin-bottom:18px;line-height:1.4;
+}
+.col-body{
+  font-size:13px;color:var(--text2);line-height:1.78;
+  font-weight:300;flex:1;
+}
+.col-rule{
+  margin-top:24px;padding:14px 16px;
+  background:var(--blue-light);
+  border-left:3px solid var(--blue);
+  border-radius:0 3px 3px 0;
+  font-family:var(--mono);font-size:11px;
+  color:var(--blue);line-height:1.5;
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  padding:14px 40px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:space-between;
+  background:#fff;
+}
+.ft-logo{
+  font-family:var(--mono);font-size:11px;color:var(--text3);
+  display:flex;align-items:center;gap:5px;
+}
+.ft-dot{width:5px;height:5px;background:var(--blue);border-radius:1px;display:inline-block}
+.ft-right{font-family:var(--mono);font-size:11px;color:var(--text3)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="logo-wrap">
+    <span class="logo-text">MiNiT</span><span class="logo-dot"></span><span class="logo-betting">.betting</span>
+  </a>
+  <div class="nav-right">
+    <a href="framework.html" class="nav-link">The Framework</a>
+    <a href="psychology.html" class="nav-link">Psychology</a>
+    <a href="numbers.html" class="nav-link">By the Numbers</a>
+    <a href="glossary.html" class="nav-link">Glossary</a>
+  </div>
+</nav>
+
+<main>
+
+  <div class="col">
+    <div class="col-num">01 — The Thesis</div>
+    <div class="col-title">Markets are<br><em>inefficient.</em></div>
+    <div class="col-subtitle">That is the edge.</div>
+    <p class="col-body">Bookmakers set prices based on public sentiment, liability management and volume — not purely on probability. Where their model is wrong, an informed participant with superior data holds a structural advantage. This is no different from equity mispricing.</p>
+    <div class="col-rule">Expected Value = (Probability × Odds) − 1</div>
+  </div>
+
+  <div class="col">
+    <div class="col-num">02 — The Discipline</div>
+    <div class="col-title">Process is the<br>only <em>moat.</em></div>
+    <div class="col-subtitle">Short-term results are noise.</div>
+    <p class="col-body">The investor's advantage emerges only across large sample sizes. A losing month with correct process is success. A winning month with incorrect process is a liability. Discipline separates participants from professionals.</p>
+    <div class="col-rule">Track every decision. Judge the process, not the outcome.</div>
+  </div>
+
+  <div class="col">
+    <div class="col-num">03 — The Risk</div>
+    <div class="col-title">Variance will<br><em>test</em> you.</div>
+    <div class="col-subtitle">Every strategy faces this.</div>
+    <p class="col-body">Even a 5% edge produces losing runs of 20, 30, or 50 bets. Without understanding variance, a sound strategy gets abandoned at exactly the wrong moment. Kelly Criterion, bankroll structuring and drawdown limits exist for one reason: to keep you in the game.</p>
+    <div class="col-rule">Ruin is permanent. Drawdown is temporary.</div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="ft-logo"><span class="ft-dot"></span> MiNiT.betting</div>
+  <div class="ft-right">Intelligence over intuition.</div>
+</footer>
+
+</body>
+</html>
