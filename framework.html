@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Framework — MiNiT.betting</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F9F8F5;--border:#E2DED6;--text:#111;--text2:#555;--text3:#999;--green:#1C5C3A;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',sans-serif;--mono:'DM Mono',monospace}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:10px 20px;display:flex;flex-direction:column;gap:6px}
+.logo-small{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--green);letter-spacing:-0.02em;text-decoration:none;display:flex;align-items:center;white-space:nowrap}
+.logo-small-dot{width:5px;height:5px;background:var(--green);border-radius:1px;display:inline-block;margin:0 1px 2px}
+.logo-small-bet{font-weight:300;color:var(--text2)}
+.nav-links{display:flex;gap:16px;overflow-x:auto;padding-bottom:2px}
+.nav-link{font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2);text-decoration:none;white-space:nowrap;transition:color .15s;flex-shrink:0}
+.nav-link:hover,.nav-link.active{color:var(--text)}
+@media(min-width:700px){nav{flex-direction:row;align-items:center;justify-content:space-between;padding:12px 32px;gap:16px}.nav-links{gap:24px;overflow-x:visible}.nav-link{font-size:10px}}
+.page-hero{max-width:680px;margin:0 auto;padding:48px 24px 32px;border-bottom:1px solid var(--border)}
+.page-kicker{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
+h1{font-family:var(--serif);font-size:clamp(28px,5vw,44px);line-height:1.06;letter-spacing:-0.02em;color:var(--text);margin-bottom:14px}
+h1 em{font-style:italic;color:var(--green)}
+.page-intro{font-size:15px;color:var(--text2);line-height:1.8;font-weight:300}
+.content{max-width:680px;margin:0 auto;padding:0 24px}
+.step{padding:36px 0;border-bottom:1px solid var(--border)}
+.step:last-child{border-bottom:none}
+.step-num{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;margin-bottom:12px}
+.step-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,26px);line-height:1.2;color:var(--text);margin-bottom:10px}
+.step-title em{font-style:italic;color:var(--green)}
+.step-body{font-size:14px;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:14px}
+.step-rule{font-family:var(--mono);font-size:11px;color:var(--text);border-left:2px solid var(--green);padding-left:12px;margin-bottom:12px}
+.step-detail{font-size:13px;color:var(--text3);line-height:1.7;font-weight:300}
+.comparison{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:3px;overflow:hidden;margin:36px 0}
+.comp-col{background:var(--bg);padding:20px 18px}
+.comp-label{font-family:var(--mono);font-size:10px;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.comp-label.bad{color:#8C3A2A}.comp-label.good{color:var(--green)}
+.comp-row{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text2)}
+.comp-row:last-child{border-bottom:none}
+.comp-marker{font-family:var(--mono);font-size:11px;flex-shrink:0}
+.comp-marker.x{color:#8C3A2A}.comp-marker.ok{color:var(--green)}
+footer{border-top:1px solid var(--border);padding:20px 24px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:40px}
+.ft-logo{font-family:var(--mono);font-size:11px;color:var(--text3)}
+.ft-links{display:flex;gap:16px;flex-wrap:wrap}
+.ft-link{font-size:11px;color:var(--text3);text-decoration:none}.ft-link:hover{color:var(--text2)}
+@media(max-width:500px){.comparison{grid-template-columns:1fr}}
+</style></head><body>
+<nav><a href="/" class="logo-small">MiNiT<span class="logo-small-dot"></span><span class="logo-small-bet">.betting</span></a><div class="nav-links"><a href="framework.html" class="nav-link active">The Framework</a><a href="psychology.html" class="nav-link">Psychology</a><a href="numbers.html" class="nav-link">By the Numbers</a><a href="glossary.html" class="nav-link">Glossary</a></div></nav>
+<section class="page-hero"><div class="page-kicker">The Framework</div><h1>Four steps to betting<br>like an <em>investor.</em></h1><p class="page-intro">Every professional system follows the same logic. Find mispricing. Size correctly. Execute without emotion. Measure everything.</p></section>
+<div class="content">
+  <div class="step"><div class="step-num">Step 01</div><div class="step-title"><em>Find</em> the edge</div><p class="step-body">Edge means a positive Expected Value — a bet where the true probability exceeds the implied probability in the odds. Without edge, staking plans and bankroll management are irrelevant. You are simply losing more efficiently.</p><div class="step-rule">EV = (True Probability × Decimal Odds) − 1</div><p class="step-detail">Sources: statistical models that outperform the market, line movement analysis, CLV patterns, inefficiencies in niche leagues where bookmaker attention is lowest.</p></div>
+  <div class="step"><div class="step-num">Step 02</div><div class="step-title"><em>Size</em> correctly</div><p class="step-body">Position sizing is where most investors fail. Too large and a variance-driven losing run causes ruin. Too small and returns are negligible. Kelly Criterion solves this mathematically.</p><div class="step-rule">Kelly % = (Edge / Odds) × Fraction</div><p class="step-detail">Use fractional Kelly (25–50%). Never exceed 2–3% of bankroll on a single bet. Set a drawdown limit — if bankroll falls 30%, pause and review.</p></div>
+  <div class="step"><div class="step-num">Step 03</div><div class="step-title"><em>Execute</em> without emotion</div><p class="step-body">Closing Line Value is the single most reliable indicator of long-term profitability. Beat the closing line consistently and profit follows. Bet immediately when value is identified — every minute of delay is value leak.</p><div class="step-rule">CLV = (Your Odds / Closing Odds) − 1</div></div>
+  <div class="step"><div class="step-num">Step 04</div><div class="step-title"><em>Track</em> everything</div><p class="step-body">Without data there is no feedback loop. Log every bet: market, price taken, closing price, stake, result, ROI. Review monthly. The spreadsheet will tell you things your intuition never will.</p><div class="step-rule">Minimum 500 bets before ROI data is statistically meaningful.</div></div>
+  <div class="comparison">
+    <div class="comp-col"><div class="comp-label bad">The gambler</div><div class="comp-row"><span class="comp-marker x">×</span> Bets on feelings, form or narrative</div><div class="comp-row"><span class="comp-marker x">×</span> Judges success by last week's result</div><div class="comp-row"><span class="comp-marker x">×</span> No staking plan — chases losses</div><div class="comp-row"><span class="comp-marker x">×</span> Cannot define or measure edge</div><div class="comp-row"><span class="comp-marker x">×</span> Abandons strategy when it struggles</div></div>
+    <div class="comp-col"><div class="comp-label good">The investor</div><div class="comp-row"><span class="comp-marker ok">+</span> Bets only where EV is positive</div><div class="comp-row"><span class="comp-marker ok">+</span> Judges success by CLV over 500+ bets</div><div class="comp-row"><span class="comp-marker ok">+</span> Uses fractional Kelly — never risks ruin</div><div class="comp-row"><span class="comp-marker ok">+</span> Quantifies edge, tracks ROI monthly</div><div class="comp-row"><span class="comp-marker ok">+</span> Trusts process, not single outcomes</div></div>
+  </div>
+</div>
+<footer><span class="ft-logo">MiNiT.betting — Intelligence over intuition.</span></footer>
+</body></html>

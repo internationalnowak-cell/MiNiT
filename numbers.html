@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>By the Numbers — MiNiT.betting</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#F9F8F5;--border:#E2DED6;--text:#111;--text2:#555;--text3:#999;--green:#1C5C3A;--serif:'Playfair Display',Georgia,serif;--sans:'Inter',sans-serif;--mono:'DM Mono',monospace}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+nav{position:sticky;top:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--border);padding:10px 20px;display:flex;flex-direction:column;gap:6px}
+.logo-small{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--green);letter-spacing:-0.02em;text-decoration:none;display:flex;align-items:center;white-space:nowrap}
+.logo-small-dot{width:5px;height:5px;background:var(--green);border-radius:1px;display:inline-block;margin:0 1px 2px}
+.logo-small-bet{font-weight:300;color:var(--text2)}
+.nav-links{display:flex;gap:16px;overflow-x:auto;padding-bottom:2px}
+.nav-link{font-family:var(--mono);font-size:9px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text2);text-decoration:none;white-space:nowrap;transition:color .15s;flex-shrink:0}
+.nav-link:hover,.nav-link.active{color:var(--text)}
+@media(min-width:700px){nav{flex-direction:row;align-items:center;justify-content:space-between;padding:12px 32px;gap:16px}.nav-links{gap:24px;overflow-x:visible}.nav-link{font-size:10px}}
+.page-hero{max-width:680px;margin:0 auto;padding:52px 24px 36px;border-bottom:1px solid var(--border)}
+.page-kicker{font-family:var(--mono);font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:var(--text3);margin-bottom:14px}
+h1{font-family:var(--serif);font-size:clamp(30px,5vw,46px);line-height:1.06;letter-spacing:-0.02em;color:var(--text);margin-bottom:14px}
+h1 em{font-style:italic;color:var(--green)}
+.page-intro{font-size:15px;color:var(--text2);line-height:1.8;font-weight:300}
+.content{max-width:680px;margin:0 auto;padding:0 24px}
+.big-stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:3px;overflow:hidden;margin:40px 0}
+.stat-cell{background:var(--bg);padding:28px 24px}
+.stat-val{font-family:var(--serif);font-size:44px;line-height:1;color:var(--text);margin-bottom:8px;letter-spacing:-0.03em}
+.stat-val em{font-style:italic;color:var(--green)}
+.stat-label{font-size:12px;color:var(--text2);font-weight:300;line-height:1.5}
+.data-section{padding:40px 0;border-bottom:1px solid var(--border)}
+.data-section:last-child{border-bottom:none}
+.data-num{font-family:var(--mono);font-size:10px;color:var(--text3);letter-spacing:0.1em;margin-bottom:14px}
+.data-title{font-family:var(--serif);font-size:clamp(20px,2.5vw,26px);line-height:1.2;color:var(--text);margin-bottom:12px}
+.data-title em{font-style:italic;color:var(--green)}
+.data-body{font-size:14px;color:var(--text2);line-height:1.8;font-weight:300;margin-bottom:16px}
+.data-rule{font-family:var(--mono);font-size:11px;color:var(--text);border-left:2px solid var(--green);padding-left:12px;margin-bottom:16px}
+.table{width:100%;border-collapse:collapse;margin-top:16px;font-size:13px;overflow-x:auto;display:block}
+.table th{font-family:var(--mono);font-size:9px;letter-spacing:0.08em;text-transform:uppercase;color:var(--text3);padding:10px 14px;text-align:left;border-bottom:1px solid var(--border)}
+.table td{padding:11px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+.table tr:last-child td{border-bottom:none}
+.table td:first-child{color:var(--text);font-weight:500}
+.table td.green{color:var(--green);font-family:var(--mono)}
+.table td.mono{font-family:var(--mono)}
+footer{border-top:1px solid var(--border);padding:20px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:40px}
+.ft-logo{font-family:var(--mono);font-size:11px;color:var(--text3)}
+.ft-links{display:flex;gap:20px;flex-wrap:wrap}
+.ft-link{font-size:11px;color:var(--text3);text-decoration:none}
+.ft-link:hover{color:var(--text2)}
+@media(max-width:600px){.big-stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo-small">MiNiT<span class="logo-small-dot"></span><span class="logo-small-bet">.betting</span></a>
+  <div class="nav-links">
+    <a href="framework.html" class="nav-link">The Framework</a>
+    <a href="psychology.html" class="nav-link">Psychology</a>
+    <a href="numbers.html" class="nav-link active">By the Numbers</a>
+    <a href="glossary.html" class="nav-link">Glossary</a>
+  </div>
+</nav>
+<section class="page-hero">
+  <div class="page-kicker">By the Numbers</div>
+  <h1>The data behind<br>the <em>discipline.</em></h1>
+  <p class="page-intro">Every claim on this site is grounded in mathematics. Here are the numbers that define what professional betting actually looks like.</p>
+</section>
+<div class="content">
+  <div class="big-stats">
+    <div class="stat-cell"><div class="stat-val">2.1<em>%</em></div><div class="stat-label">Average Pinnacle margin — the tightest market available. Your edge must exceed this.</div></div>
+    <div class="stat-cell"><div class="stat-val">500<em>+</em></div><div class="stat-label">Minimum bets before ROI data carries statistical significance.</div></div>
+    <div class="stat-cell"><div class="stat-val">3–8<em>%</em></div><div class="stat-label">Realistic ROI range for professional value bettors over large samples.</div></div>
+    <div class="stat-cell"><div class="stat-val">87<em>%</em></div><div class="stat-label">Of long-term losses attributable to psychology and staking errors — not model failure.</div></div>
+  </div>
+  <div class="data-section">
+    <div class="data-num">Market structure</div>
+    <div class="data-title">Bookmaker <em>margins</em> by operator</div>
+    <p class="data-body">The margin embedded in odds varies significantly between operators. Betting into a 10% margin market requires a substantial edge just to break even.</p>
+    <table class="table"><thead><tr><th>Operator</th><th>Avg. Margin</th><th>Sharp-Friendly</th><th>Limits</th></tr></thead><tbody>
+      <tr><td>Pinnacle</td><td class="green mono">2.1%</td><td>Yes</td><td>High</td></tr>
+      <tr><td>Betfair Exchange</td><td class="green mono">2.5%</td><td>Yes</td><td>Market depth</td></tr>
+      <tr><td>Bet365</td><td class="mono">5.6%</td><td>No</td><td>Low (sharps)</td></tr>
+      <tr><td>Unibet</td><td class="mono">6.8%</td><td>No</td><td>Low</td></tr>
+      <tr><td>William Hill</td><td class="mono">8.4%</td><td>No</td><td>Very low</td></tr>
+    </tbody></table>
+  </div>
+  <div class="data-section">
+    <div class="data-num">Bankroll management</div>
+    <div class="data-title">Kelly Criterion — <em>by the numbers</em></div>
+    <p class="data-body">Given a 5% edge on an even-money bet, fractional Kelly (25%) suggests staking 1.25% of bankroll per bet.</p>
+    <div class="data-rule">Kelly % = (bp − q) / b — where b = odds−1, p = win prob, q = 1−p</div>
+    <table class="table"><thead><tr><th>Edge</th><th>Odds</th><th>Full Kelly</th><th>Quarter Kelly</th></tr></thead><tbody>
+      <tr><td>2%</td><td>2.00</td><td class="mono">2.0%</td><td class="green mono">0.5%</td></tr>
+      <tr><td>5%</td><td>2.00</td><td class="mono">5.0%</td><td class="green mono">1.25%</td></tr>
+      <tr><td>5%</td><td>3.00</td><td class="mono">2.5%</td><td class="green mono">0.63%</td></tr>
+      <tr><td>10%</td><td>2.00</td><td class="mono">10.0%</td><td class="green mono">2.5%</td></tr>
+    </tbody></table>
+  </div>
+  <div class="data-section">
+    <div class="data-num">Variance</div>
+    <div class="data-title">Losing runs — <em>even with edge</em></div>
+    <p class="data-body">Even with a genuine 5% edge, a losing run of 14+ bets occurs roughly once every 100 bets at even money. At longer odds, worse drawdowns are statistically guaranteed.</p>
+    <table class="table"><thead><tr><th>Edge</th><th>Odds</th><th>Expected losing run (1-in-100)</th></tr></thead><tbody>
+      <tr><td>5%</td><td>2.00</td><td class="mono">14 bets</td></tr>
+      <tr><td>5%</td><td>3.00</td><td class="mono">22 bets</td></tr>
+      <tr><td>5%</td><td>5.00</td><td class="mono">36 bets</td></tr>
+      <tr><td>3%</td><td>2.00</td><td class="mono">18 bets</td></tr>
+    </tbody></table>
+  </div>
+</div>
+<footer><span class="ft-logo">MiNiT.betting — Intelligence over intuition.</span></footer>
+</body>
+</html>
